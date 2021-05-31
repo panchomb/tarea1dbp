@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title> DBP Ejericio 2 </title>
+    </head>
+    <body>
+        <ul>
+            <u>Cursos: </u>
+            {% for curso in cursos %}
+            <ul>
+                <li><b> {{curso.nombre}} </b> </li>
+                <ul>
+                <li> <b>Cantidad de Créditos: </b> {{curso.creditos}} </li>
+                <li> <b>Horas Semanales: </b> {{curso.horas}} </li>
+                <li> <b>Carrera:</b> {{curso.carrera}}</li>
+                <br>
+                </ul>
+            </ul>
+            {% endfor %}
+            <br>
+            <u>Estudiantes:</u>
+            {% for estudiante in estudiantes %}
+                <ul>
+                    <li> <b> Nombre </b> = {{estudiante.nombre}} {{estudiante.apellido}} </li>
+                    <li> <b>Edad </b> = {{estudiante.edad}}</li>
+                    <li> <b> Código: </b> {{estudiante.codigo}} </li>
+                    <li> <b> Secciones: </b></li>
+                    <ul>
+                        {% for seccion in estudiante.secs %}
+                            <li> {{seccion.curso.nombre}} {{seccion.nombre}} </li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                </ul>
+            {% endfor %}
+            <br>
+            <u>Secciones: </u>
+            {% for seccion in secciones %}
+                <ul>
+                <li> <b> {{seccion.curso.nombre}} </b> </li>
+                <ul>
+                <li> <b> Seccion </b> = {{seccion.nombre}} </li>
+                <li> <b> Profesor </b> = {{seccion.profesor.nombre}} {{seccion.profesor.apellido}} </li>
+                <li> <b> Número de Clase </b> = {{seccion.num_clase}}</li>
+                <li> <b> Estudiantes: </b></li>
+                <ul> 
+                    {% for estudiante in seccion.estudiantes.all() %}
+                        <li> {{estudiante.nombre}} {{estudiante.apellido}} {{estudiante.codigo}} </li>
+                    {% endfor %}
+                </ul>
+                </ul>
+                </ul>
+                <br>
+            {% endfor %}
+            <br>
+            <u> Profesores: </u>
+            {% for profesor in profesores %}
+                <ul>
+                    <li> <b> {{profesor.nombre}} {{profesor.apellido}} </b></li>
+                    <ul>
+                        <li> <b>Edad: </b> {{profesor.edad}} </li>
+                        <li> <b>Sexo: </b>{{profesor.sexo}} </li>
+                        <li> <b> Secciones: </b></li>
+                        <ul>
+                            {% for seccion in profesor.secciones %}
+                                <li> {{seccion.curso.nombre}} {{seccion.nombre}} </li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                </ul>
+                <br>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

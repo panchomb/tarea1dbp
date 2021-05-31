@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title> DBP Ejercicio 3 </title>
+    </head>
+    <body>
+        <ul>
+            <li> <b>Usuarios: </b> </li>
+            <ul>
+                {% for usuario in usuarios %}
+                    <li> <b>Username: </b> {{usuario.user}}</li>
+                    <li><b>Contraseña: </b> {{usuario.password}}</li>
+                    <li> <b> Pedido: </b> {{usuario.pedido}}</li>
+                    <br>
+                {% endfor %}
+                <br>
+            </ul>
+            <li> <b>Pedidos:  </b> </li>
+            <ul>
+                {% for pedido in ordenes %}
+                    <li> <b> Pedido ID: </b> {{pedido.id}}</li>
+                    <li> <b> Destino: </b> {{pedido.destino}} </li>
+                    <li> <b> Productos: </b> {{pedido.productos}} </li>
+                    <li> <b> Tipo de Vehículo: </b> {{pedido.vehiculo}}</li>
+                    <br>
+                {% endfor %}
+            </ul>
+        </ul>
+    </body>
+</html>
